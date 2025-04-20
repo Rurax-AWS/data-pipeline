@@ -6,15 +6,28 @@ provider:
   region: us-east-1
   environment:
     SQS_URL: ${env:SQS_URL}
+    SQS_ARN: ${env:SQS_ARN}
+
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action:
+            - sqs:SendMessage
+            - sqs:ReceiveMessage
+            - sqs:DeleteMessage
+          Resource: ${env:SQS_ARN}
+
 
 functions:
   consumer:
     handler: main.event_pubsub_subscribe
+    timeout: 540
     environment: 
       SQS_QUEUE_URL: ${env:SQS_URL}
     events:
-      - sqs:
-          arn: ${env:SQS_ARN}
+      - schedule:
+          rate: rate(2 minutes)
 
 package:
   individually: true
