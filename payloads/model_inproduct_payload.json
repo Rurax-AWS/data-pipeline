@@ -1,0 +1,44 @@
+// Index
+
+
+// Busca
+{
+  "GA_ID": "G-XXXXXXX",
+  "USER_ID": 30,
+  "DATA": {
+    "PROD_ID": 45,
+    "LAST_PRODS": [10, 2, 5, 10, 50]
+  },
+  "TAGS": "mode=model1,version=v2,test=a"
+}
+
+// Busca
+
+{
+  "ITEM_IDS": [10, 1, 25, 36, 15],
+  "SCORES": [0.32, 0.20, 0.01, 0.001, 0],
+  "TAGS": "mode=model1,version=v2,test=a"
+}
+
+// {
+//   "test": "true",
+//   "channel": "TEST_ALFRED_EVALUATION",
+//   "country": "BR",
+//   "search_id": "TEST_ALFRED_EVALUATION",
+//   "user_long": -49.0162,
+//   "user_lat": -22.309038,
+//   "merchants": [
+//     {
+//       "delivery_fee": 8.5,
+//       "score": 15.07393564488979,
+//       "delivery_fee_type": "PRICE_RANGE",
+//       "delivery_time": 28,
+//       "id": "3ae3ba25-df94-4d51-933f-5911d2dbc14b",
+//       "rating": 4.351860046386719,
+//       "distance": 7.16,
+//       "boosting": 5.74456262588501
+//     },
+//   ],
+//   "user_uuid2": "d8b3aa8e-0cd2-4981-b494-31665b235af8",
+//   "user_uuid": "00008f48-df50-41cc-998b-03e3c0dc373a"
+// }

@@ -1,0 +1,34 @@
+service: rurax-data-pipeline
+
+provider:
+  name: aws
+  runtime: python3.8
+  region: us-east-1
+  environment:
+    SQS_URL: ${env:SQS_URL}
+
+functions:
+  consumer:
+    handler: main.event_pubsub_subscribe
+    environment: 
+      SQS_QUEUE_URL: ${env:SQS_URL}
+    events:
+      - sqs:
+          arn: ${env:SQS_ARN}
+
+package:
+  individually: true
+  exclude:
+    - .gitignore
+    - node_modules/**
+    - payloads/**
+    - tables/**
+    - tmp/**
+    - venv/**
+    - .venv/**
+    - .cache/**
+    - tests/**
+    - docs/**
+    - output/**  
+    - '*.tar.gz'
+    - google-cloud-sdk/**

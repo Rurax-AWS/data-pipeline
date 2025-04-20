@@ -1,0 +1,13 @@
+{
+  "TYPE": "CARR_IMG_VIEW",
+  "GA_ID": "G-XXXXXXX",
+  "USER_ID": 30,
+  "PROD_ID": 45,
+  "DATA":{
+    "IMG_REF": "https://storage.googleapis.com/rurax/11/property/744/7g6zej0p8lxinjhnki7vs.jpeg",
+    "POS": 1    
+  },
+  "PAGE_REF": "https://rurax.com.br/imovel/apartamento-com-4-dormitorios-a-venda-320-m-por-rdollar-850-000-setor-oeste-goiania-go-ap-3302-20",
+  "TAGS": "",
+  "EVENT_TIME": "2021-03-06 02:07:49"
+}

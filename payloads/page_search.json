@@ -1,0 +1,14 @@
+{
+  "TYPE": "PAGE_SEARCH",
+  "ITEM_TYPE": "PROD",
+  "GA_ID": "1852381578.1634931783",
+  "USER_ID": "",
+  "PAGE_REF": "/",
+  "TAGS": "mode=model1,version=v2,test=a",
+  "DATA": {
+    "SEARCH": "sementes de qualidade",
+    "FILTER": "segment=properties&states=&cities=6,5&price=168000,7400000&size=0,440001&page=1&perPage=12&published=true"
+  },
+  "EVENT_TIME": "2022-01-11 17:45:19",
+  "EVENT_INGEST": "2022-01-11 17:45:19"
+}
