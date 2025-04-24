@@ -14,14 +14,16 @@ def receive_messages(max_messages=10):
     )
     return response.get('Messages', [])
 
-def process_message(message):
+def process_message(message, timestamp_event_ingest):
     body = json.loads(message['Body'])
-    body['EVENT_INGEST'] = strftime("%Y-%m-%d %H:%M:%S", gmtime())
+    body['EVENT_INGEST'] = timestamp_event_ingest
     print("Mensagem processada:", json.dumps(body, indent=4))
+
+    return body
 
 def delete_message(receipt_handle):
     sqs.delete_message(
         QueueUrl=queue_url,
         ReceiptHandle=receipt_handle
     )
-    print(f"Mensagem com ReceiptHandle {receipt_handle} deletada da fila com sucesso.")
+    print(f"Mensagem deletada da fila com sucesso.")
