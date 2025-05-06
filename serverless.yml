@@ -1,0 +1,53 @@
+service: rurax-data-pipeline
+
+provider:
+  name: aws
+  runtime: python3.8
+  region: us-east-1
+  environment:
+    SQS_URL: ${env:SQS_URL}
+    SQS_ARN: ${env:SQS_ARN}
+    S3_BUCKET_BACKUP: ${env:S3_BUCKET_BACKUP}
+
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action:
+            - sqs:SendMessage
+            - sqs:ReceiveMessage
+            - sqs:DeleteMessage
+          Resource: ${env:SQS_ARN}
+        - Effect: Allow
+          Action:
+            - s3:PutObject
+          Resource: arn:aws:s3:::${env:S3_BUCKET_BACKUP}/*
+
+
+functions:
+  consumer:
+    handler: main.event_pubsub_subscribe
+    timeout: 540
+    environment: 
+      SQS_QUEUE_URL: ${env:SQS_URL}
+      S3_BUCKET_BACKUP: ${env:S3_BUCKET_BACKUP}
+    events:
+      - schedule:
+          rate: rate(2 minutes)
+
+package:
+  individually: true
+  exclude:
+    - .gitignore
+    - node_modules/**
+    - payloads/**
+    - tables/**
+    - tmp/**
+    - venv/**
+    - .venv/**
+    - .cache/**
+    - tests/**
+    - docs/**
+    - output/**  
+    - '*.tar.gz'
+    - google-cloud-sdk/**
