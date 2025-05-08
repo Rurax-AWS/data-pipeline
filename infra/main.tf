@@ -2,12 +2,11 @@ provider "aws" {
   region = var.aws_region
 }
 
-module "sqs_queue" {
-  source = "./modules/sqs"
-  queue_name = var.queue_name
+resource "aws_s3_bucket" "rurax_bucket" {
+    bucket = var.bucket_name
+    force_destroy = true
 }
 
-module "s3_bucket" {
-  source = "./modules/s3"
-  bucket_name = var.bucket_name
+resource "aws_sqs_queue" "rurax_queue" {
+    name = var.sqs_queue
 }

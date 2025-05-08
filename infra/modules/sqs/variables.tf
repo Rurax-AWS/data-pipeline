@@ -1,1 +1,0 @@
-variable "queue_name" {}
