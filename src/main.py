@@ -1,7 +1,7 @@
-import json
-from utils.sqs_client import receive_messages, process_message, delete_message
-from utils.csv_convert import json_to_csv
-from utils.s3_client import upload_to_s3
+from src.utils.sqs_client import receive_messages, process_message, delete_message
+from src.utils.csv_convert import json_to_csv
+from src.utils.s3_client import upload_to_s3
+from src.database.db_client import insert_page_event
 import os
 from time import gmtime, strftime, sleep
 
@@ -24,6 +24,8 @@ def event_pubsub_subscribe(event, context):
             timestamp_csv = strftime("%Y%m%d_%H%M%S", getgmtime)
 
             body = process_message(message, timestamp_event_ingest)
+
+            insert_page_event(body)
 
             data = [body]
             file_name, csv_content = json_to_csv(data, timestamp_csv)

@@ -26,7 +26,7 @@ provider:
 
 functions:
   consumer:
-    handler: main.event_pubsub_subscribe
+    handler: src.main.event_pubsub_subscribe
     timeout: 540
     environment: 
       SQS_QUEUE_URL: ${env:SQS_URL}
@@ -36,6 +36,8 @@ functions:
           rate: rate(2 minutes)
 
 package:
+  include:
+      - src/**
   individually: true
   exclude:
     - .gitignore
@@ -50,4 +52,3 @@ package:
     - docs/**
     - output/**  
     - '*.tar.gz'
-    - google-cloud-sdk/**
