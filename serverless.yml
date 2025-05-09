@@ -23,10 +23,12 @@ provider:
             - s3:PutObject
           Resource: arn:aws:s3:::${env:S3_BUCKET_BACKUP}/*
 
+plugins:
+  - serverless-python-requirements
 
 functions:
   consumer:
-    handler: src.main.event_pubsub_subscribe
+    handler: main.event_pubsub_subscribe
     timeout: 540
     environment: 
       SQS_QUEUE_URL: ${env:SQS_URL}
@@ -52,3 +54,8 @@ package:
     - docs/**
     - output/**  
     - '*.tar.gz'
+
+custom:
+  pythonRequirements:
+    useDownloadCache: false
+    useStaticCache: false

@@ -1,7 +1,7 @@
-from src.utils.sqs_client import receive_messages, process_message, delete_message
-from src.utils.csv_convert import json_to_csv
-from src.utils.s3_client import upload_to_s3
-from src.database.db_client import insert_page_event
+from utils.sqs_client import receive_messages, process_message, delete_message
+from utils.csv_convert import json_to_csv
+from utils.s3_client import upload_to_s3
+from database.db_client import insert_page_event
 import os
 from time import gmtime, strftime, sleep
 
