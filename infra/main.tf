@@ -7,6 +7,10 @@ resource "aws_s3_bucket" "rurax_bucket" {
     force_destroy = true
 }
 
-resource "aws_sqs_queue" "rurax_queue" {
-    name = var.sqs_queue
+resource "aws_sqs_queue" "rurax_queue_input" {
+    name = var.sqs_queue_input
+}
+
+resource "aws_sqs_queue" "rurax_queue_output" {
+    name = var.sqs_queue_output
 }
