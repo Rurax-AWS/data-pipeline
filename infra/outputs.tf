@@ -9,3 +9,7 @@ output "rurax_queue_url" {
 output "rurax_queue_arn" {
     value = aws_sqs_queue.rurax_queue.arn    
 }
+
+output "db_endpoint" {
+  value = aws_db_instance.rurax_postgres.address
+}
