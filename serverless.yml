@@ -2,6 +2,7 @@ service: rurax-data-pipeline
 
 provider:
   name: aws
+  profile: rurax
   runtime: python3.8
   region: us-east-1
   environment:
